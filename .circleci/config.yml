@@ -69,33 +69,35 @@ jobs:
           paths: [backend/node_modules]
           key: backend-build
 
- test-frontend:
+  test-frontend:
     docker:
-      # Docker image that supports NodeJS
       - image: circleci/node:13.8.0
-    steps:
+     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build-cache]
+          keys: [frontend-deps]
       - run:
-          name: Test frontend
+          name: Front-end Unit Test
           command: |
-            cd ./frontend
-            npm i
+            cd frontend
+            npm install
             npm run test
+                
   test-backend:
     docker:
-      # Docker image that supports NodeJS
       - image: circleci/node:13.8.0
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build-cache]
+          keys: [backend-deps]
       - run:
-          name: Test backend
+          name: Back-end Unit Test
           command: |
-            cd ./backend
-            npm run test
+             cd backend
+             npm install
+             npm run test
+
+
 #   scan-frontend:
 #     docker:
 #       # Docker image here
