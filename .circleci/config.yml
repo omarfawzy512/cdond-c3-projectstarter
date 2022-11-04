@@ -70,7 +70,7 @@ jobs:
           key: backend-build
 
   test-frontend:
-    docker:
+     docker:
       - image: circleci/node:13.8.0
      steps:
       - checkout
