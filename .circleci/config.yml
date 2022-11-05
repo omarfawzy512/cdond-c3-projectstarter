@@ -149,7 +149,7 @@ jobs:
             npm audit --audit-level=critical
             
       # Here's where you will add some code to rollback on failure      
-deploy-infrastructure:
+  deploy-infrastructure:
     docker:
       - image: cimg/base:stable
     steps:
