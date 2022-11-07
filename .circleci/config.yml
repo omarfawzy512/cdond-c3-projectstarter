@@ -186,7 +186,6 @@ deploy-infrastructure:
           root: ~/
           paths:
             - project/.circleci/ansible/inventory.txt
-
 configure-infrastructure:
     docker:
       - image: cimg/base:stable
