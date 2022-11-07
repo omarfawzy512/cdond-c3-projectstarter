@@ -48,26 +48,26 @@ install_nodejs:
   #           aws cloudformation delete-stack --stack-name udapeople-backend-<< parameters.Workflow_ID >>
   #           aws s3 rm s3://udapeople-<<parameters.Workflow_ID>> --recursive
   #           aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.Workflow_ID >>
-  #   revert-migrations:
-  #       description: Revert the last migration
-  #       parameters:
-  #       Workflow_ID:
-  #       type: string
-  #       default: ${CIRCLE_WORKFLOW_ID:0:7}
+    revert-migrations:
+        description: Revert the last migration
+        parameters:
+        Workflow_ID:
+        type: string
+        default: ${CIRCLE_WORKFLOW_ID:0:7}
 
-  #   steps:
-  #     - run:
-  #         name: Revert migrations
-  #         when: on_fail
-  #         command: |
-  #           SUCCESS=$(curl --insecure  https://kvdb.io/${KVDB_BUCKET}/migration_<< parameters.Workflow_ID >>)
-  #           # Logic for reverting the database state
-  #           if (( $SUCCESS == 1 ));
-  #           then
-  #             cd ~/project/backend
-  #             npm install
-  #             npm run migration:revert
-  #           fi
+    steps:
+      - run:
+          name: Revert migrations
+          when: on_fail
+          command: |
+            SUCCESS=$(curl --insecure  https://kvdb.io/${KVDB_BUCKET}/migration_<< parameters.Workflow_ID >>)
+            # Logic for reverting the database state
+            if (( $SUCCESS == 1 ));
+            then
+              cd ~/project/backend
+              npm install
+              npm run migration:revert
+            fi
 jobs:
   build-frontend:
     docker:
@@ -222,22 +222,22 @@ jobs:
             ansible-playbook -i inventory.txt configure-server.yml
   
 
-#   run-migrations:
-#     docker:
-#       # Docker image here that supports NodeJS
-#     steps:
-#       # Checkout code from git
-#       - run:
-#           name: Run migrations
-#           command: |
-#             # Your code here
-#             exit 1
-#       - run:
-#           name: Send migration results to memstash
-#           command: |
-#             # Your code here
-#             exit 1
-#      # Here's where you will add some code to rollback on failure      
+  run-migrations:
+    docker:
+      # Docker image here that supports NodeJS
+    steps:
+      # Checkout code from git
+      - run:
+          name: Run migrations
+          command: |
+            # Your code here
+            exit 1
+      - run:
+          name: Send migration results to memstash
+          command: |
+            # Your code here
+            exit 1
+     # Here's where you will add some code to rollback on failure      
 
 #   deploy-frontend:
 #     docker:
@@ -354,8 +354,8 @@ workflows:
               only: [master]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
-      # - run-migrations:
-      #     requires: [configure-infrastructure]
+      - run-migrations:
+          requires: [configure-infrastructure]
       # - deploy-frontend:
       #     requires: [run-migrations]
       # - deploy-backend:
