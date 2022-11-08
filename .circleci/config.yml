@@ -224,7 +224,6 @@ configure-infrastructure:
             cat ".circleci/ansible/inventory.txt"
             ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/configure-server.yml
       - destroy-environment
-
   # configure-infrastructure:
   #   docker:
   #     - image: cimg/base:stable
