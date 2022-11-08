@@ -151,7 +151,7 @@ jobs:
             npm audit fix --force --audit-level=critical
             npm audit --audit-level=critical
 
-deploy-infrastructure:  
+  deploy-infrastructure:  
     docker:
       - image: circleci/base:stable
     steps:
@@ -186,7 +186,7 @@ deploy-infrastructure:
           root: ~/
           paths:
             - project/.circleci/ansible/inventory.txt
-configure-infrastructure:
+  configure-infrastructure:
     docker:
       - image: circleci/base:stable
     steps:
