@@ -226,6 +226,9 @@ jobs:
             npm run migrations > migrations_dump.txt
             cat migrations_dump.txt
 
+      - destroy-environment
+      - revert-migrations
+      
   # deploy-frontend:
   #   docker:
   #     - image: cimg/base:stable
