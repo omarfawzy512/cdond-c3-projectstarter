@@ -188,7 +188,6 @@ jobs:
             - project/.circleci/ansible/inventory.txt
       
       - destroy-environment
-
   configure-infrastructure:
     docker:
       - image: cimg/base:stable
@@ -298,7 +297,6 @@ jobs:
             ansible-playbook -i inventory.txt deploy-backend.yml
       - destroy-environment
       - revert-migrations
-
   # smoke-test:
   #   docker:
   #     - image: cimg/base:stable
