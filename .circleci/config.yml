@@ -352,6 +352,7 @@ jobs:
               --stack-name InitialStack
       - destroy-environment
       - revert-migrations
+      
   # cleanup:
   #   docker:
   #     - image: cimg/base:stable
