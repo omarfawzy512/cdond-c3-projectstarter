@@ -222,7 +222,6 @@ jobs:
             npm run build
             npm run migrations > migrations_dump.txt
             cat migrations_dump.txt
-
       - destroy-environment
       - revert-migrations
 
@@ -351,7 +350,6 @@ jobs:
               --stack-name InitialStack
       - destroy-environment
       - revert-migrations
-
   cleanup:
     docker:
       - image: cimg/base:stable
