@@ -1,0 +1,17 @@
+URL-1
+https://github.com/omarfawzy512/cdond-c3-projectstarter.git
+
+URL-2
+http://udapeople-ce2d94c.s3-website-us-east-1.amazonaws.com/
+
+URL-3
+
+http://d2u0zgy4jsz4zj.cloudfront.net/
+
+URL-4
+
+http://100.24.52.149:3030/api/status/
+
+URL -5
+
+http://ec2-54-210-104-111.compute-1.amazonaws.com:9090/graph
